@@ -1,5 +1,5 @@
+import 'package:avaliacao_componentizacao_stateful_controller/controllers/Product_controller.dart';
 import 'package:avaliacao_componentizacao_stateful_controller/widgets/add_to_beg_button.dart';
-import 'package:avaliacao_componentizacao_stateful_controller/controllers/ProductController.dart';
 import 'package:avaliacao_componentizacao_stateful_controller/widgets/price_summary.dart';
 import 'package:avaliacao_componentizacao_stateful_controller/widgets/product_card.dart';
 import 'package:avaliacao_componentizacao_stateful_controller/widgets/quantity_selector.dart';
@@ -7,29 +7,6 @@ import 'package:avaliacao_componentizacao_stateful_controller/widgets/size_selec
 import 'package:avaliacao_componentizacao_stateful_controller/widgets/text_style.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'DevsEcomm',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF9F1F6),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: ProductPage(),
-    );
-  }
-}
-
-//Pagina
 class ProductPage extends StatefulWidget {
   ProductPage({super.key});
 
@@ -82,13 +59,14 @@ class ProductPageState extends State<ProductPage> {
                       controller.toggleFavorite();
                     });
                   },
+                  price: controller.selectedPrice,
                 ),
               ),
 
               const SizedBox(height: 24),
 
               //Aonde chamo os textos estilizados
-              textStyle(label: 'Tamanho'),
+              TextStyleWidget(label: 'Tamanho'),
 
               //Aonde chamo a caixa que me informa o tamanho da peça
               const SizedBox(height: 12),
@@ -104,7 +82,7 @@ class ProductPageState extends State<ProductPage> {
 
               //Aonde chamo os textos estilizados
               const SizedBox(height: 28),
-              textStyle(label: 'Quantidade'),
+              TextStyleWidget(label: 'Quantidade'),
 
               //Aonde chamo a caixa de seleção de quantidade
               const SizedBox(height: 12),
@@ -124,12 +102,7 @@ class ProductPageState extends State<ProductPage> {
 
               //Caixa aonde faço as somas de quantidade*valorPeça
               const SizedBox(height: 28),
-              PriceSummary(
-                subtotal: controller.multiplySubtotal(
-                  controller.product.price,
-                  controller.quantity,
-                ),
-              ),
+              PriceSummary(subtotal: controller.subtotal),
             ],
           ),
         ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class Product {
   final String name;
-  final double price;
   final IconData icon;
   final List<String> availableSizes;
+  final Map<String, double> price;
 
   const Product({
     required this.name,

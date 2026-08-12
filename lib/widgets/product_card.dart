@@ -1,4 +1,4 @@
-import 'package:avaliacao_componentizacao_stateful_controller/models/Product.dart';
+import 'package:avaliacao_componentizacao_stateful_controller/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -7,11 +7,13 @@ class ProductCard extends StatelessWidget {
     required this.product,
     required this.isFavorite,
     required this.onFavorite,
+    required this.price,
   });
 
   final Product product;
   final bool isFavorite;
   final VoidCallback onFavorite;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +47,12 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                formatPrice(product.price),
-                style: const TextStyle(fontSize: 14, color: Colors.black54),
+                formatPrice(price),
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

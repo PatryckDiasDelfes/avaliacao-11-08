@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class textStyle extends StatelessWidget {
-  const textStyle({super.key, required this.label});
+class TextStyleWidget extends StatelessWidget {
+  const TextStyleWidget({super.key, required this.label});
 
   final String label;
 

@@ -1,4 +1,4 @@
-import 'package:avaliacao_componentizacao_stateful_controller/models/Product.dart';
+import 'package:avaliacao_componentizacao_stateful_controller/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class SizeSelector extends StatelessWidget {
