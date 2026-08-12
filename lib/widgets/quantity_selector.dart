@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class quantitySelector extends StatelessWidget {
-  const quantitySelector({
+class QuantitySelector extends StatelessWidget {
+  const QuantitySelector({
     super.key,
     required this.quantity,
     required this.onIncrease,

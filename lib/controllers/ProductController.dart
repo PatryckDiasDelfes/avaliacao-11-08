@@ -31,5 +31,10 @@ class ProductController {
     isFavorite = !isFavorite;
   }
 
+  double multiplySubtotal(double price, int quantity) {
+    return price * quantity;
+  }
+  //double subtotal = multiplySubtotal(product.price, quantity);
+
   void addToCart() {}
 }

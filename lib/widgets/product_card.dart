@@ -1,8 +1,8 @@
 import 'package:avaliacao_componentizacao_stateful_controller/models/Product.dart';
 import 'package:flutter/material.dart';
 
-class productCard extends StatelessWidget {
-  const productCard({
+class ProductCard extends StatelessWidget {
+  const ProductCard({
     super.key,
     required this.product,
     required this.isFavorite,
@@ -15,7 +15,7 @@ class productCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _formatPrice(double value) {
+    String formatPrice(double value) {
       return 'R\$ ${value.toStringAsFixed(2).replaceAll('.', ',')}';
     }
 
@@ -45,7 +45,7 @@ class productCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                _formatPrice(product.price),
+                formatPrice(product.price),
                 style: const TextStyle(fontSize: 14, color: Colors.black54),
               ),
             ],

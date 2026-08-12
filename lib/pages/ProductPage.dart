@@ -34,15 +34,14 @@ class ProductPage extends StatefulWidget {
   ProductPage({super.key});
 
   @override
-  State<ProductPage> createState() => _ProductPageState();
+  State<ProductPage> createState() => ProductPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class ProductPageState extends State<ProductPage> {
   final ProductController controller = ProductController();
 
   @override
   Widget build(BuildContext context) {
-    final double subtotal = controller.product.price * controller.quantity;
     return Scaffold(
       backgroundColor: const Color(0xFFF9F1F6),
 
@@ -75,7 +74,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
 
                 //Aonde chamo meu productCard
-                child: productCard(
+                child: ProductCard(
                   product: controller.product,
                   isFavorite: controller.isFavorite,
                   onFavorite: () {
@@ -109,7 +108,7 @@ class _ProductPageState extends State<ProductPage> {
 
               //Aonde chamo a caixa de seleção de quantidade
               const SizedBox(height: 12),
-              quantitySelector(
+              QuantitySelector(
                 quantity: controller.quantity,
                 onIncrease: () {
                   setState(() {
@@ -125,7 +124,12 @@ class _ProductPageState extends State<ProductPage> {
 
               //Caixa aonde faço as somas de quantidade*valorPeça
               const SizedBox(height: 28),
-              PriceSummary(subtotal: subtotal),
+              PriceSummary(
+                subtotal: controller.multiplySubtotal(
+                  controller.product.price,
+                  controller.quantity,
+                ),
+              ),
             ],
           ),
         ),
